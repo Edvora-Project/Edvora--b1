@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import AlumniGuidance from "./pages/AlumniGuidance";
 import UploadNotes from "./pages/UploadNotes";
+import ProjectGuidance from "./pages/ProjectGuidance";
 
 // Loading component for initial app load
 const AppLoader = () => (
@@ -52,14 +53,22 @@ const AppContent = () => {
               </ProtectedRoute>
             } 
           />
-          <Route 
-            path="/upload" 
-            element={
-              <ProtectedRoute>
-                <UploadNotes />
-              </ProtectedRoute>
-            } 
-          />
+            <Route 
+              path="/upload" 
+              element={
+                <ProtectedRoute>
+                  <UploadNotes />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/project-guidance" 
+              element={
+                <ProtectedRoute>
+                  <ProjectGuidance />
+                </ProtectedRoute>
+              } 
+            />
         </Routes>
       </main>
     </div>

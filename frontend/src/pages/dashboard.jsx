@@ -133,7 +133,7 @@ export default function Dashboard() {
       {/* Dashboard Cards */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Study Material Sharing */}
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <div className="text-center">
@@ -148,8 +148,8 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Skill Development */}
-            <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+            {/* Skill Development - Commented Out */}
+            {/* <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <div className="text-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                   <img src="/images/skill_development.webp" alt="Skill Development" className="w-12 h-12 rounded-lg object-cover"/>
@@ -160,7 +160,7 @@ export default function Dashboard() {
                   Explore
                 </Link>
               </div>
-            </div>
+            </div> */}
 
             {/* Year Wise Roadmap */}
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
@@ -184,9 +184,9 @@ export default function Dashboard() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Project Guidance</h3>
                 <p className="text-gray-600 mb-6">Get expert help with your projects</p>
-                <button className="bg-gradient-to-r from-orange-600 to-orange-700 text-white px-6 py-3 rounded-2xl font-semibold hover:from-orange-700 hover:to-orange-800 transform hover:scale-105 transition-all duration-200 shadow-lg">
+                <Link to="/project-guidance" className="bg-gradient-to-r from-orange-600 to-orange-700 text-white px-6 py-3 rounded-2xl font-semibold hover:from-orange-700 hover:to-orange-800 transform hover:scale-105 transition-all duration-200 shadow-lg inline-block">
                   Get Help
-                </button>
+                </Link>
               </div>
             </div>
           </div>
