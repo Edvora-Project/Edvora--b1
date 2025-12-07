@@ -29,44 +29,35 @@ export default function LandingPage() {
               <a href="#faq" className="text-gray-700 hover:text-indigo-600 font-medium transition-colors duration-200">
                 FAQs
               </a>
-        </nav>
+            </nav>
           </div>
         </div>
       </header>
 
-      {/* Hero Section with Cards */}
+      {/* Hero Section with Single Card */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex justify-center">
             {/* Hero Content Card */}
-            <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
-              <div className="space-y-6">
+            <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20 w-full">
+              <div className="space-y-6 text-center">
                 <h1 className="text-6xl lg:text-7xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent leading-tight">
                   EDVORA
                 </h1>
-                <p className="text-xl text-gray-600 leading-relaxed">
+                <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
                   Unlock resources. Connect with mentors. Explore projects. Shape your future.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-          <Link to="/signup">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <Link to="/signup">
                     <button className="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg">
                       Get Started
-          </button>
-          </Link>
-          <Link to="/login">
-                    <button className="w-full sm:w-auto bg-white text-indigo-600 px-8 py-4 rounded-2xl font-semibold text-lg border-2 border-indigo-200 hover:border-indigo-300 hover:bg-indigo-50 transition-all duration-200">
-            Login
                     </button>
                   </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Hero Image Card */}
-            <div className="relative">
-              <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl p-8 shadow-2xl">
-                <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6">
-                  <div className="aspect-video bg-cover bg-center rounded-xl bg-[url('/images/herosecimage.jpg')] shadow-lg"></div>
+                  <Link to="/login">
+                    <button className="w-full sm:w-auto bg-white text-indigo-600 px-8 py-4 rounded-2xl font-semibold text-lg border-2 border-indigo-200 hover:border-indigo-300 hover:bg-indigo-50 transition-all duration-200">
+                      Login
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -83,12 +74,36 @@ export default function LandingPage() {
               Edvora is a platform designed to connect students with alumni for guidance, mentorship and opportunities.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <div className="text-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <img src="/images/mentorship.jpg" alt="Mentorship" className="w-12 h-12 rounded-lg object-cover"/>
+                  <svg
+                    className="w-12 h-12 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 21v-2a4 4 0 014-4h0"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M18 21v-2a4 4 0 00-3-3.87"
+                    />
+                  </svg>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Mentorship</h3>
                 <p className="text-gray-600">Connect with experienced mentors for career guidance and personal development.</p>
@@ -98,7 +113,31 @@ export default function LandingPage() {
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <div className="text-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <img src="/images/alugui.jpg" alt="Alumni Guidance" className="w-12 h-12 rounded-lg object-cover"/>
+                  <svg
+                    className="w-12 h-12 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14l9-5-9-5-9 5 9 5z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14v7"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 12v5a7 7 0 007 7 7 7 0 007-7v-5"
+                    />
+                  </svg>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Alumni Guidance</h3>
                 <p className="text-gray-600">Get insights and advice from successful alumni in your field.</p>
@@ -108,7 +147,43 @@ export default function LandingPage() {
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <div className="text-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <img src="/images/networking.jpg" alt="Networking" className="w-12 h-12 rounded-lg object-cover"/>
+                  <svg
+                    className="w-12 h-12 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M20 8a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 21a4 4 0 10-4-4 4 4 0 004 4z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M20 21a4 4 0 10-4-4 4 4 0 004 4z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 10h6"
+                    />
+                  </svg>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Networking</h3>
                 <p className="text-gray-600">Build professional relationships and expand your network.</p>
@@ -118,12 +193,36 @@ export default function LandingPage() {
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <div className="text-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <img src="/images/resshr.jpg" alt="Resources" className="w-12 h-12 rounded-lg object-cover"/>
+                  <svg
+                    className="w-12 h-12 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16v14H4z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 2h8v4H8z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 10h4M8 14h3"
+                    />
+                  </svg>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Resources</h3>
                 <p className="text-gray-600">Access study materials, project ideas, and career resources.</p>
-          </div>
-          </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

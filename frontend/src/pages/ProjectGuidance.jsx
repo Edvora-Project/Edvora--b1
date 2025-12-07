@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import ProjectSubmissionForm from '../components/ProjectSubmissionForm';
-import MentorAssignmentConfirmation from '../components/MentorAssignmentConfirmation';
 import ProjectDashboard from '../components/ProjectDashboard';
 
 const ProjectGuidance = () => {
@@ -21,7 +20,6 @@ const ProjectGuidance = () => {
   };
 
   const handleViewProject = () => {
-    setSubmissionResult(null);
     setShowProjectDashboard(true);
   };
 
@@ -79,6 +77,33 @@ const ProjectGuidance = () => {
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
             Get expert mentorship for your projects from experienced professionals in your field
           </p>
+
+          {submissionResult && (
+            <div className="max-w-2xl mx-auto mb-6">
+              <div className="rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-left shadow-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div>
+                  <p className="text-sm font-semibold text-green-800">Project submitted successfully!</p>
+                  <p className="text-xs text-green-700 mt-1">
+                    Your project has been submitted and is now waiting for review by seniors. You can track its status in "My Projects".
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleViewProject}
+                    className="px-4 py-2 rounded-xl bg-green-600 text-white text-xs font-semibold hover:bg-green-700 transition-colors"
+                  >
+                    View My Projects
+                  </button>
+                  <button
+                    onClick={handleCloseSubmission}
+                    className="px-3 py-2 rounded-xl bg-white text-gray-700 text-xs font-medium border border-gray-200 hover:bg-gray-50 transition-colors"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -216,15 +241,6 @@ const ProjectGuidance = () => {
         <ProjectSubmissionForm
           onSuccess={handleSubmissionSuccess}
           onCancel={() => setShowSubmissionForm(false)}
-        />
-      )}
-
-      {submissionResult && (
-        <MentorAssignmentConfirmation
-          project={submissionResult.project}
-          mentor={submissionResult.mentor}
-          onClose={handleCloseSubmission}
-          onViewProject={handleViewProject}
         />
       )}
 

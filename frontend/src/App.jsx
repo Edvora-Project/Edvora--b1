@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import SeniorRoute from "./components/SeniorRoute";
 
 import LandingPage from "./pages/LandingPage";
 import Signup from "./pages/Signup";
@@ -10,6 +11,13 @@ import Dashboard from "./pages/Dashboard";
 import AlumniGuidance from "./pages/AlumniGuidance";
 import UploadNotes from "./pages/UploadNotes";
 import ProjectGuidance from "./pages/ProjectGuidance";
+import YearRoadmap from "./pages/YearRoadmap";
+import StudyMaterialSharing from "./pages/StudyMaterialSharing";
+import SeniorDashboard from "./pages/SeniorDashboard";
+import InterviewPreparation from "./pages/InterviewPreparation";
+import ExamPreparation from "./pages/ExamPreparation";
+import SkillEnhancement from "./pages/SkillEnhancement";
+import StartupHiring from "./pages/StartupHiring";
 
 // Loading component for initial app load
 const AppLoader = () => (
@@ -56,9 +64,9 @@ const AppContent = () => {
             <Route 
               path="/upload" 
               element={
-                <ProtectedRoute>
+                <SeniorRoute>
                   <UploadNotes />
-                </ProtectedRoute>
+                </SeniorRoute>
               } 
             />
             <Route 
@@ -67,6 +75,62 @@ const AppContent = () => {
                 <ProtectedRoute>
                   <ProjectGuidance />
                 </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/study-materials" 
+              element={
+                <ProtectedRoute>
+                  <StudyMaterialSharing />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/year-roadmap" 
+              element={
+                <ProtectedRoute>
+                  <YearRoadmap />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/interview-preparation" 
+              element={
+                <ProtectedRoute>
+                  <InterviewPreparation />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/exam-preparation" 
+              element={
+                <ProtectedRoute>
+                  <ExamPreparation />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/skill-enhancement" 
+              element={
+                <ProtectedRoute>
+                  <SkillEnhancement />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/startup-hiring" 
+              element={
+                <ProtectedRoute>
+                  <StartupHiring />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/senior-dashboard" 
+              element={
+                <SeniorRoute>
+                  <SeniorDashboard />
+                </SeniorRoute>
               } 
             />
         </Routes>

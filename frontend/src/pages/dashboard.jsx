@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 export default function Dashboard() {
-  const { user, logout } = useAuth();
+  const { user, logout, isSeniorUser } = useAuth();
   const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
 
   const handleLogout = async () => {
@@ -30,9 +30,6 @@ export default function Dashboard() {
               <nav className="hidden md:flex space-x-8">
                 <Link to="/alumni-guidance" className="text-gray-700 hover:text-indigo-600 font-medium transition-colors">
                   Alumni Guidance
-                </Link>
-                <Link to="/upload" className="text-gray-700 hover:text-indigo-600 font-medium transition-colors">
-                  Upload Notes
                 </Link>
               </nav>
               <div className="flex items-center gap-4">
@@ -134,15 +131,18 @@ export default function Dashboard() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Study Material Sharing */}
+            {/* Access Materials (Study Material Sharing for students) */}
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <div className="text-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <img src="/images/study_material_sharing.avif" alt="Study Material Sharing" className="w-12 h-12 rounded-lg object-cover"/>
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a2 2 0 012-2h9l5 5v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 3v4a1 1 0 001 1h4" />
+                  </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Study Material Sharing</h3>
-                <p className="text-gray-600 mb-6">Access and share study materials with your peers</p>
-                <Link to="/upload" className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-2xl font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-200 shadow-lg">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Access Materials</h3>
+                <p className="text-gray-600 mb-6">Quickly browse notes and study materials shared on EDVORA</p>
+                <Link to="/study-materials" className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-2xl font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-200 shadow-lg">
                   Get Started
                 </Link>
               </div>
@@ -166,13 +166,18 @@ export default function Dashboard() {
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <div className="text-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <img src="/images/year_wise_roadmap.avif" alt="Year Wise Roadmap" className="w-12 h-12 rounded-lg object-cover"/>
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3M5 11h14M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Year Wise Roadmap</h3>
                 <p className="text-gray-600 mb-6">Plan your academic journey strategically</p>
-                <button className="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-3 rounded-2xl font-semibold hover:from-purple-700 hover:to-purple-800 transform hover:scale-105 transition-all duration-200 shadow-lg">
+                <Link 
+                  to="/year-roadmap" 
+                  className="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-3 rounded-2xl font-semibold hover:from-purple-700 hover:to-purple-800 transform hover:scale-105 transition-all duration-200 shadow-lg inline-block"
+                >
                   View Roadmap
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -180,7 +185,9 @@ export default function Dashboard() {
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <div className="text-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <img src="/images/project_guidance.avif" alt="Project Guidance" className="w-12 h-12 rounded-lg object-cover"/>
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Project Guidance</h3>
                 <p className="text-gray-600 mb-6">Get expert help with your projects</p>
@@ -207,11 +214,28 @@ export default function Dashboard() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Browse Notes</h3>
                 <p className="text-gray-600 mb-6">Explore study materials shared by the community</p>
-                <Link to="/upload" className="bg-indigo-600 text-white px-6 py-3 rounded-2xl font-semibold hover:bg-indigo-700 transition-colors">
+                <Link to="/study-materials" className="bg-indigo-600 text-white px-6 py-3 rounded-2xl font-semibold hover:bg-indigo-700 transition-colors">
                   Browse Now
                 </Link>
               </div>
             </div>
+
+            {isSeniorUser && (
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M10 14h10M10 18h10" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Senior Dashboard</h3>
+                  <p className="text-gray-600 mb-6">Special panel for seniors to upload notes and guide juniors.</p>
+                  <Link to="/senior-dashboard" className="bg-amber-500 text-white px-6 py-3 rounded-2xl font-semibold hover:bg-amber-600 transition-colors">
+                    Go to Senior Panel
+                  </Link>
+                </div>
+              </div>
+            )}
 
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
               <div className="text-center">
@@ -228,20 +252,8 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V1a1 1 0 011-1h2a1 1 0 011 1v18a1 1 0 01-1 1H4a1 1 0 01-1-1V1a1 1 0 011-1h2a1 1 0 011 1v3m0 0h8M7 4h8" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Upload Content</h3>
-                <p className="text-gray-600 mb-6">Share your study materials with others</p>
-                <Link to="/upload" className="bg-purple-600 text-white px-6 py-3 rounded-2xl font-semibold hover:bg-purple-700 transition-colors">
-                  Upload Now
-                </Link>
-              </div>
-            </div>
+            {/* Upload Content is intentionally not shown on student dashboard.
+                Seniors should use the Senior Dashboard to access upload features. */}
           </div>
         </div>
       </section>

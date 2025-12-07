@@ -15,6 +15,20 @@ export const getMentors = async () => {
   }
 };
 
+// Get all projects (for senior/mentor views)
+export const getAllProjects = async () => {
+  try {
+    const response = await databases.listDocuments(
+      DATABASE_ID,
+      PROJECTS_COLLECTION_ID
+    );
+    return response.documents;
+  } catch (error) {
+    console.error('Error fetching all projects:', error);
+    throw error;
+  }
+};
+
 // Get mentors by domain
 export const getMentorsByDomain = async (domain) => {
   try {
@@ -59,23 +73,49 @@ export const assignMentor = async (projectDomain, projectSubdomain) => {
   }
 };
 
-// Create new project
+// Create new project (initially Pending Review, no mentor yet)
 export const createProject = async (projectData) => {
   try {
-    // Assign mentor first
-    const assignedMentor = await assignMentor(projectData.domain, projectData.subdomain);
-    
-    // Create project with assigned mentor
     const project = await databases.createDocument(
       DATABASE_ID,
       PROJECTS_COLLECTION_ID,
       ID.unique(),
       {
         ...projectData,
-        assigned_mentor_id: assignedMentor.$id,
-        assigned_mentor_name: assignedMentor.name,
+        assigned_mentor_id: null,
+        assigned_mentor_name: null,
+        current_status: 'Pending Review',
+        created_at: new Date().toISOString(),
+      }
+    );
+
+    return { project };
+  } catch (error) {
+    console.error('Error creating project:', error);
+    throw error;
+  }
+};
+
+// Approve project and assign mentor (used by seniors)
+// approver should be the currently logged-in senior user (from AuthContext)
+export const approveAndAssignMentor = async (projectId, approver) => {
+  try {
+    // Load existing project
+    const existingProject = await getProject(projectId);
+
+    // Use the approving senior as the assigned mentor/guide
+    const approverName = approver.name || approver.email;
+
+    // Update project with mentor and approved status
+    const updatedProject = await databases.updateDocument(
+      DATABASE_ID,
+      PROJECTS_COLLECTION_ID,
+      projectId,
+      {
+        assigned_mentor_id: approver.$id,
+        assigned_mentor_name: approverName,
         assigned_at: new Date().toISOString(),
-        current_status: 'Assigned'
+        current_status: 'Assigned',
       }
     );
 
@@ -85,17 +125,17 @@ export const createProject = async (projectData) => {
       MENTOR_RELATIONS_COLLECTION_ID,
       ID.unique(),
       {
-        mentor_id: assignedMentor.$id,
-        student_id: projectData.student_id,
-        project_id: project.$id,
+        mentor_id: approver.$id,
+        student_id: existingProject.student_id,
+        project_id: updatedProject.$id,
         status: 'Active',
-        start_date: new Date().toISOString()
+        start_date: new Date().toISOString(),
       }
     );
 
-    return { project, mentor: assignedMentor };
+    return { project: updatedProject };
   } catch (error) {
-    console.error('Error creating project:', error);
+    console.error('Error approving and assigning mentor:', error);
     throw error;
   }
 };

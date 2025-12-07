@@ -15,6 +15,22 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Simple allowlist for senior access (edit this array to control who is a senior)
+  const seniorEmails = [
+    // Add or change authorized senior emails here
+    'senior@edvora.com',
+    'senior1@edvora.com',
+    'senior2@edvora.com',
+    'senior3@edvora.com',
+    'senior4@edvora.com',
+    'senior5@edvora.com',
+    'senior6@edvora.com',
+    'senior7@edvora.com',
+    'senior8@edvora.com'
+  ];
+
+  const seniorEmailsLower = seniorEmails.map((e) => e.toLowerCase());
+
   useEffect(() => {
     // Auto-login: Check for existing session on app load
     checkExistingSession();
@@ -87,7 +103,12 @@ export const AuthProvider = ({ children }) => {
     signup,
     logout,
     isAuthenticated: !!user,
-    checkExistingSession
+    checkExistingSession,
+    isSeniorUser: !!(
+      user &&
+      user.email &&
+      seniorEmailsLower.includes(user.email.toLowerCase())
+    )
   };
 
   return (

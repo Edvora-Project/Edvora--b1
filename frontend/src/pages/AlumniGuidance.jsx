@@ -14,25 +14,80 @@ export default function AlumniGuidance() {
       title: "Interview Preparation",
       desc: "Get guidance from alumni on how to crack technical and HR interviews with confidence.",
       img: "/images/Inertviewprep.webp",
-      icon: "🎯"
+      icon: "🎯",
+      path: "/interview-preparation"
     },
     {
       title: "Exam Preparation", 
       desc: "Tips and mentorship to excel in competitive exams with confidence.",
       img: "/images/examprep.jpg",
-      icon: "📚"
+      icon: "📚",
+      path: "/exam-preparation"
     },
     {
-      title: "Project Mentorship",
-      desc: "Learn how to design, build, and present impactful academic or personal projects.",
+      title: "Skill Enhancement",
+      desc: "Get guidance to improve your core skills (coding, problem solving, communication, and more).",
       img: "/images/promen.jpg",
-      icon: "🚀"
+      icon: "🚀",
+      path: "/skill-enhancement"
     },
     {
       title: "Startup Hiring",
       desc: "Connect with startups and explore exciting career opportunities.",
       img: "/images/startup.png",
-      icon: "💼"
+      icon: "💼",
+      path: "/startup-hiring"
+    }
+  ];
+
+  const mentors = [
+    {
+      name: "Aisha Verma",
+      role: "SDE II",
+      company: "Google",
+      help: "DSA, system design basics, and product-based interview strategy."
+    },
+    {
+      name: "Rohan Mehta",
+      role: "Software Engineer",
+      company: "Microsoft",
+      help: "Data structures, operating systems, and low-level design for tech interviews."
+    },
+    {
+      name: "Sara Khan",
+      role: "Data Scientist",
+      company: "Amazon",
+      help: "ML/AI roadmap, projects to add in your portfolio, and internship preparation."
+    },
+    {
+      name: "Arjun Patel",
+      role: "Backend Engineer",
+      company: "Uber",
+      help: "Scalable backend, databases, and real-world project guidance."
+    },
+    {
+      name: "Neha Singh",
+      role: "Frontend Engineer",
+      company: "Flipkart",
+      help: "React, UI/UX basics, and how to showcase web projects effectively."
+    },
+    {
+      name: "Vikram Rao",
+      role: "Product Engineer",
+      company: "Stripe",
+      help: "Building portfolio projects, product thinking, and startup hiring."
+    },
+    {
+      name: "Priya Nair",
+      role: "SDE",
+      company: "Swiggy",
+      help: "Campus placements, referral strategy, and balancing college with preparation."
+    },
+    {
+      name: "Karthik Iyer",
+      role: "Full Stack Developer",
+      company: "Zoho",
+      help: "End-to-end project mentoring and improving GitHub/profile for recruiters."
     }
   ];
 
@@ -88,26 +143,79 @@ export default function AlumniGuidance() {
           <div className="grid md:grid-cols-2 gap-8">
             {guidanceCards.map((item, index) => (
               <div key={index} className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <div className="flex flex-col lg:flex-row items-center gap-6">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-4 mb-4">
-                      <span className="text-4xl">{item.icon}</span>
-                      <h3 className="text-3xl font-bold text-gray-900">{item.title}</h3>
+                <div className="flex flex-col items-center text-center gap-4">
+                  <div className="flex items-center justify-center gap-3 mb-2">
+                    <div className="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-700">
+                      {item.title === "Interview Preparation" && (
+                        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 4h14M5 8h14M7 12h10M9 16h6" />
+                        </svg>
+                      )}
+                      {item.title === "Exam Preparation" && (
+                        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3M5 11h14M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                      )}
+                      {item.title === "Skill Enhancement" && (
+                        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2a7 7 0 00-4 12.748V22l4-2 4 2v-7.252A7 7 0 0012 2z" />
+                        </svg>
+                      )}
+                      {item.title === "Startup Hiring" && (
+                        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7h18M5 7V5a2 2 0 012-2h10a2 2 0 012 2v2M7 13h3v6H7zM14 13h3v6h-3z" />
+                        </svg>
+                      )}
                     </div>
-                    <p className="text-lg text-gray-600 mb-6">{item.desc}</p>
-                    <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-2xl font-semibold hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg">
-                      Get Guidance
-                    </button>
+                    <h3 className="text-2xl font-bold text-gray-900">{item.title}</h3>
                   </div>
-                  <div className="flex-shrink-0">
-                    <div className="w-64 h-48 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl overflow-hidden">
-                      <img 
-                        src={item.img} 
-                        alt={item.title} 
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
+                  <p className="text-lg text-gray-600 mb-4">{item.desc}</p>
+                  <Link
+                    to={item.path}
+                    className="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-2xl font-semibold hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg"
+                  >
+                    Get Guidance
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Mentors */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white/50">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-10 text-center">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">Featured Mentors</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Connect with seniors and alumni working at top companies. Use EDVORA to reach out,
+              ask questions, and request guidance for interviews, projects, and career decisions.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {mentors.map((mentor, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl p-5 shadow-lg border border-gray-100 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-semibold mb-3 mx-auto">
+                    {mentor.name.charAt(0)}
                   </div>
+                  <h3 className="text-lg font-bold text-gray-900 text-center">{mentor.name}</h3>
+                  <p className="text-sm text-gray-600 text-center mt-1">
+                    {mentor.role} · {mentor.company}
+                  </p>
+                  <p className="text-sm text-gray-600 mt-4 text-center">
+                    {mentor.help}
+                  </p>
+                </div>
+                <div className="mt-4 text-center">
+                  <button className="inline-flex items-center justify-center px-4 py-2 rounded-2xl text-sm font-semibold bg-indigo-600 text-white hover:bg-indigo-700 transition-colors">
+                    Seek Guidance
+                  </button>
                 </div>
               </div>
             ))}

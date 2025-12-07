@@ -27,6 +27,11 @@ const ProjectDashboard = ({ onClose }) => {
 
   const handleProjectSelect = async (project) => {
     setSelectedProject(project);
+    setMentorDetails(null);
+
+    // Only load mentor details if a mentor has actually been assigned
+    if (!project.assigned_mentor_id) return;
+
     try {
       const mentor = await getMentorDetails(project.assigned_mentor_id);
       setMentorDetails(mentor);
@@ -37,12 +42,19 @@ const ProjectDashboard = ({ onClose }) => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'Pending': return 'bg-yellow-100 text-yellow-800';
-      case 'Assigned': return 'bg-blue-100 text-blue-800';
-      case 'In Progress': return 'bg-green-100 text-green-800';
-      case 'Completed': return 'bg-purple-100 text-purple-800';
-      case 'Cancelled': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'Pending':
+      case 'Pending Review':
+        return 'bg-yellow-100 text-yellow-800';
+      case 'Assigned':
+        return 'bg-blue-100 text-blue-800';
+      case 'In Progress':
+        return 'bg-green-100 text-green-800';
+      case 'Completed':
+        return 'bg-purple-100 text-purple-800';
+      case 'Cancelled':
+        return 'bg-red-100 text-red-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
     }
   };
 
@@ -146,6 +158,26 @@ const ProjectDashboard = ({ onClose }) => {
                         </div>
                       )}
                     </div>
+
+                    {selectedProject.assigned_mentor_name && (
+                      <div className="mt-2">
+                        <span className="text-xs font-medium text-gray-600">Approved by:</span>
+                        <p className="text-sm text-gray-900">{selectedProject.assigned_mentor_name}</p>
+                      </div>
+                    )}
+
+                    {/* Status / notification for student */}
+                    {selectedProject.current_status === 'Pending Review' && (
+                      <div className="mt-4 p-3 rounded-xl bg-yellow-50 border border-yellow-100 text-sm text-yellow-800">
+                        Your project has been submitted and is waiting for senior review.
+                      </div>
+                    )}
+
+                    {selectedProject.current_status === 'Assigned' && !mentorDetails && (
+                      <div className="mt-4 p-3 rounded-xl bg-blue-50 border border-blue-100 text-sm text-blue-800">
+                        Your project has been approved and a mentor has been assigned. Mentor details will appear here shortly.
+                      </div>
+                    )}
 
                     {mentorDetails && (
                       <div className="border-t pt-6">
