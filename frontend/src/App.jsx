@@ -18,6 +18,7 @@ import InterviewPreparation from "./pages/InterviewPreparation";
 import ExamPreparation from "./pages/ExamPreparation";
 import SkillEnhancement from "./pages/SkillEnhancement";
 import StartupHiring from "./pages/StartupHiring";
+import Dashboard from "./pages/dashboard";
 
 // Loading component for initial app load
 const AppLoader = () => (
