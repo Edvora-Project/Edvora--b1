@@ -7,7 +7,6 @@ import SeniorRoute from "./components/SeniorRoute";
 import LandingPage from "./pages/LandingPage";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
 import AlumniGuidance from "./pages/AlumniGuidance";
 import UploadNotes from "./pages/UploadNotes";
 import ProjectGuidance from "./pages/ProjectGuidance";
